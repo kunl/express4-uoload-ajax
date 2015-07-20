@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>index</title>
+  <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+
+  <style>
+        form{
+            width: 220px;
+            height: 100px;
+            margin: 30px;
+            padding: 20px 30px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        input{
+            -webkit-appearance: none;
+            opacity: 0;
+            height: 100%;
+        }
+        label{
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            height: 28px;
+            display: inline-block;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        label:after{
+            position: absolute;
+            content: attr(filename);
+            top: 7px;
+            left: 5px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        button{
+            border: 1px solid #eee;
+            background: #ddd;
+            padding: 8px 26px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover{
+            background: #ccc;
+        }
+        p{
+            text-align: right;
+            color: #bbb;
+        }
+
+  </style>
+</head>
+<body>
+    <form id="upload">
+      <label filename="请选择要上传的文件">
+        <input type="file" name="image">
+      </label>
+      <br>
+      <button type="button">upload</button>
+      <p>ajax upload</p>
+    </form>
+    <img src="" alt="" width="300px">
+
+
+    <script>
+        $(function(){
+
+            $('button').on('click', function(){
+                console.log($('input'))
+                var formData = new FormData($('#upload')[0]);
+
+                $.ajax({
+                    type: 'post',
+                    url: 'upload',
+                    data: formData,
+                    contentType: false,
+                    processData: false
+                }).then(function(data){
+
+                    $('img').attr('src', data.url);
+
+                }, function(err){
+
+                    console.log(err);
+
+                });
+            })
+        });
+    </script>
+
+</body>
+</html>

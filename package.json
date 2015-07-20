@@ -1,0 +1,30 @@
+{
+  "name": "express4-uoload-ajax",
+  "version": "0.0.1",
+  "description": "use formData ajax to upload file",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunl/express4-uoload-ajax.git"
+  },
+  "keywords": [
+    "express",
+    "ajax",
+    "formData",
+    "upload"
+  ],
+  "author": "kunl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kunl/express4-uoload-ajax/issues"
+  },
+  "homepage": "https://github.com/kunl/express4-uoload-ajax#readme",
+  "dependencies": {
+    "ejs": "^2.3.3",
+    "express": "^4.13.1",
+    "multiparty": "^4.1.2"
+  }
+}
