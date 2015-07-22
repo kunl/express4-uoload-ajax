@@ -7,7 +7,9 @@ var fs = require('fs');
 var multiparty = require('multiparty');
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'use ajax formData to upload files '});
+    res.render('index', {
+        title: 'use ajax formData to upload files '
+    });
 });
 
 
@@ -24,10 +26,9 @@ router.post('/upload', function(req, res, next) {
 
         fs.createReadStream(file.path)
             .pipe(fs.createWriteStream(target));
-            path.resolve(req.headers.origin + '/upload/' + fileName )
+
         res.json({
-            url: req.headers.origin + '/upload/' + fileName ,
-            ue: path.normalize(req.headers.origin + '/upload/' + fileName )
+            url: req.headers.origin + '/upload/' + fileName
         });
     });
 });

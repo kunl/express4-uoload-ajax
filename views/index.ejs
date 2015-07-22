@@ -2,7 +2,7 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
-  <title>index</title>
+  <title><%= title %></title>
   <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
 
   <style>
@@ -54,7 +54,11 @@
   </style>
 </head>
 <body>
+
+    <h3><%= title %></h3>
+
     <form id="upload">
+
       <label filename="请选择要上传的文件">
         <input type="file" name="image">
       </label>
@@ -67,6 +71,10 @@
 
     <script>
         $(function(){
+            $('input').on('change', function(e){
+                console.log(this.files[0].name);
+               this.files[0].name && $('label').attr('filename', this.files[0].name)
+            })
 
             $('button').on('click', function(){
                 console.log($('input'))
